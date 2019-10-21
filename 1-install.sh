@@ -1,0 +1,1 @@
+brew tap homebrew/cask && brew cask install phantomjs && yarn global add casperjs
