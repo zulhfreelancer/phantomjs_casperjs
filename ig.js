@@ -24,17 +24,16 @@ var getContent = function() {
 		});
 		scrollDelta = newScrolled - scrolled; // update scrollDelta
 		scrolled = newScrolled; // and scrolled
-		console.log("Now scrolled", scrolled);
+		console.log("Now scrolled: " + scrolled);
 	});
 	casper.then(function() {
 		// After we scroll to the bottom (http://casperjs.readthedocs.org/en/latest/modules/casper.html#then)
 		if (scrollDelta != 0) {
-			console.log("We are not done yet...");
 			// Check whether scrollDelta is zero, which means that we haven't scrolled any further
 			getContent(); // If scrollDelta _has_ changed, recursively call getContent
 		} else {
 			casper.then(function() {
-				// Otherwise
+				// Scraping finish
 				console.log("Saving...");
 				var html = String(casper.getHTML()); // grab our HTML (http://casperjs.readthedocs.org/en/latest/modules/casper.html#gethtml)
 				var filename = "ig.html";
